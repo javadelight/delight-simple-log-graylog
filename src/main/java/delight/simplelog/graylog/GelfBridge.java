@@ -38,6 +38,7 @@ public class GelfBridge implements LogListener {
 		message.setHost(thisHost);
 		message.setVersion("1.1");
 		message.setMaximumMessageSize(8192);
+		message.setFacility("delight-simple-log");
 		return message;
 	}
 
