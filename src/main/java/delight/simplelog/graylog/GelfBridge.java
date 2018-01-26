@@ -62,6 +62,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, String text) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		sender.sendMessage(message);
@@ -70,6 +73,10 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, String text, FieldDefinition[] fields) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
+		
 		GelfMessage message = createMessage(level, text);
 
 		addFields(fields, message);
@@ -79,6 +86,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, String text, Throwable exception) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addStackTrace(exception, message);
@@ -89,6 +99,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, String text, Throwable exception, FieldDefinition[] fields) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addFields(fields, message);
@@ -100,6 +113,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, Object context, String text) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addContext(context, message);
@@ -109,6 +125,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, Object context, String text, FieldDefinition[] fields) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addContext(context, message);
@@ -120,6 +139,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, Object context, String text, Throwable exception) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addContext(context, message);
@@ -131,6 +153,9 @@ public class GelfBridge implements LogListener {
 
 	@Override
 	public void onMessage(Level level, Object context, String text, Throwable exception, FieldDefinition[] fields) {
+		if (level.getLevel() > Log.LEVEL.getLevel()) {
+			return;
+		}
 		GelfMessage message = createMessage(level, text);
 
 		addContext(context, message);
